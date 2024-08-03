@@ -13,7 +13,10 @@
         <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
             <h1 class="navbar-brand" href="#">AI BLOG GENERATOR</h1>
-            <a class="text-white nav-link" href="#">Logout</a>
+            <div>
+            <a class="text-white nav-link" href="/">Home</a>
+            <a class="text-white nav-link" href="logout">Logout</a>
+        </div>
         </div>
         </nav>
         <!-- main -->
@@ -28,16 +31,16 @@
           <section>
                 <div class="card bg-dark shadow-lg" style="margin: 20px;">
                     <div class="card-body text-white">
-                        <h5 class="card-title">this is blog title</h5>
-                        <p class="card-text" id="blogContent">
-                        this is content
+                        <h5 class="card-title">{{blog_article_detail.youtube_title}}/h5>
+                        <p class="" id="blogContent">
+                            {{blog_article_detail.generated_content}}
                         </p>
                         <hr class="border-3">
                         <h4 class="card-title">Youtube Title</h4>
-                        <p class="card-title">this is youtube video title</p>
+                        <p class="card-title">{{blog_article_detail.youtube_title}}</p>
 
                         <h4 class="card-title">Youtube Link</h4>
-                        <a href="#" class="nav-link text-warning">this is youtube link</a>
+                        <a href="{{blog_article_detail.youtube_link}}" class="nav-link text-warning">{{blog_article_detail.youtube_link}}</a>
                         
 
                 </div>

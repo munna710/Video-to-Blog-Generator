@@ -13,7 +13,10 @@
         <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
             <h1 class="navbar-brand" href="#">AI BLOG GENERATOR</h1>
-            <a class="text-white nav-link" href="#">Logout</a>
+            <div>
+            <a class="text-white nav-link" href="/">Home</a>
+            <a class="text-white nav-link" href="logout">Logout</a>
+        </div>
         </div>
         </nav>
         <!-- main -->
@@ -28,31 +31,20 @@
 
 
             <br>
-          <section>
+            <section>
+                {% for article in blog_articles reversed %}
                 <div class="card bg-dark shadow-lg" style="margin: 20px;">
                     <div class="card-body text-white">
-                        <h5 class="card-title">this is title</h5>
-                <p class="card-text" id="blogContent">
-                    this is content
-                </p>
+                        <a class="text-white nav-link" href="blog-details/{{article.id}}">
+                            <h5 class="card-title">{{article.youtube_title}}</h5>
+                            <hr class="border-3">
+                            <p class="card-text" id="blogContent">
+                                {{article.generated_content|truncatechars:80}}
+                            </p>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="card bg-dark shadow-lg" style="margin: 20px;">
-                <div class="card-body text-white">
-                    <h5 class="card-title">this is title</h5>
-            <p class="card-text" id="blogContent">
-                this is content
-            </p>
-            </div>
-        </div>
-        <div class="card bg-dark shadow-lg" style="margin: 20px;">
-            <div class="card-body text-white">
-                <h5 class="card-title">this is title</h5>
-        <p class="card-text" id="blogContent">
-            this is content
-        </p>
-        </div>
-    </div>
+                {% endfor %}
             </section>
         </div>
 
