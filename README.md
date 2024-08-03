@@ -30,3 +30,18 @@ AI Blog Generator is a Django-based application that allows users to generate bl
 - Update the `MEDIA_ROOT` and `MEDIA_URL` settings in `settings.py` to configure media file storage.
 
 ```On default Media will be store in 'media' folder, make sure it is present in root directory where manage.py exist```
+
+## SignUP page
+![](images/signup.png)
+
+## Login page
+![](images/login.png)
+
+## Home
+![](images/home2.png)
+
+## list of Blogs 
+![](images/list-blogs.png)
+
+## Blog Detail Page
+![](images/blog_details.png)
