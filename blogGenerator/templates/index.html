@@ -74,10 +74,11 @@
             </p>
             <!-- Youtube section -->
              <div class="" >
-                <form>
+                <form action="{% url 'generate-blog' %}" method="post" >
+                    {% csrf_token %}
                     <div class="mb-3" style="margin: 20px;">
-                    <label for="youtubelink" class="form-label" style="font-weight: bold;">Enter Youtube video Link</label>
-                    <input class="form-control" id="youtubelink" type="url" placeholder="Paste Youtube Link">
+                    <label for="youtubeLink" class="form-label" style="font-weight: bold;">Enter Youtube video Link</label>
+                    <input class="form-control" id="youtubeLink" type="url" name="youtubeLink" placeholder="Paste Youtube Link">
 
                 </div>
 
@@ -109,7 +110,43 @@
 
         </footer>
         <script>
+            document.getElementById('blogGeneratorButton').addEventListener('click', async () => {
+            
 
+            const youtubeLink = document.getElementById('youtubeLink').value;
+            const blogContent = document.getElementById('blogContent');
+            
+            if(youtubeLink) {
+                document.getElementById('loading-circle').style.display = 'block';
+                
+                blogContent.innerHTML = ''; // Clear previous content
+
+                const endpointUrl = '/generate-blog';
+                
+                try {
+                    const response = await fetch(endpointUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ link: youtubeLink })
+                    });
+
+                    const data = await response.json();
+
+                    blogContent.innerHTML = data.content;
+
+                } catch (error) {
+                    console.error("Error occurred:", error);
+                    alert("Something went wrong. Please try again later.");
+                    
+                }
+                document.getElementById('loading-circle').style.display = 'none';
+            } else {
+                alert("Please enter a YouTube link.");
+            }
+        });
+            
         </script>
 
 </body>
